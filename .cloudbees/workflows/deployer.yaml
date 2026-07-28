@@ -15,7 +15,7 @@ on:
 jobs:
   taskflow-db:
     if: ${{ fromJSON(inputs.manifest)['taskflow-db']['docker.io/mock/database'].deploy }}
-    uses: <YOUR_GITHUB_ORG>/taskflow-db/.cloudbees/workflows/deploy.yaml
+    uses: jfair9/taskflow-db/.cloudbees/workflows/deploy.yaml
     vars: inherit
     secrets: inherit
     with:
@@ -26,7 +26,7 @@ jobs:
   taskflow-backend:
     needs: taskflow-db
     if: ${{ fromJSON(inputs.manifest)['taskflow-backend']['docker.io/mock/backend'].deploy }}
-    uses: <YOUR_GITHUB_ORG>/taskflow-backend/.cloudbees/workflows/deploy.yaml
+    uses: jfair9/taskflow-backend/.cloudbees/workflows/deploy.yaml
     vars: inherit
     secrets: inherit
     with:
@@ -37,7 +37,7 @@ jobs:
   taskflow-frontend:
     needs: taskflow-backend
     if: ${{ fromJSON(inputs.manifest)['taskflow-frontend']['docker.io/mock/frontend'].deploy }}
-    uses: <YOUR_GITHUB_ORG>/taskflow-frontend/.cloudbees/workflows/deploy.yaml
+    uses: jfair9/taskflow-frontend/.cloudbees/workflows/deploy.yaml
     vars: inherit
     secrets: inherit
     with:
